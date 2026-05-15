@@ -28,15 +28,15 @@ export const urlFor = (source) => {
 export const getBlogs = async () => {
   if (!client || PROJECT_ID === 'avp-tech-id') return [];
   try {
-    const query = `*[_type == "post"] | order(publishedAt desc) {
+    const query = `*[_type == "blog"] | order(publishedAt desc) {
       _id,
       title,
       slug,
       excerpt,
       mainImage,
       publishedAt,
-      "author": author->name,
-      "categories": categories[]->title
+      author,
+      categories
     }`;
     return await client.fetch(query);
   } catch (err) {
@@ -48,15 +48,17 @@ export const getBlogs = async () => {
 export const getBlogPost = async (slug) => {
   if (!client || PROJECT_ID === 'avp-tech-id' || !slug) return null;
   try {
-    const query = `*[_type == "post" && slug.current == $slug][0] {
+    const query = `*[_type == "blog" && slug.current == $slug][0] {
       _id,
       title,
       slug,
       body,
       mainImage,
       publishedAt,
-      "author": author->name,
-      "categories": categories[]->title
+      author,
+      categories,
+      seoTitle,
+      seoDescription
     }`;
     return await client.fetch(query, { slug });
   } catch (err) {
