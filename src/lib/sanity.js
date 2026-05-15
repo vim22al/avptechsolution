@@ -2,7 +2,7 @@ import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 // Safe Project ID check to prevent app crash if credentials are missing
-const PROJECT_ID = import.meta.env.VITE_SANITY_PROJECT_ID || 'avp-tech-id'; // Must be a-z, 0-9, or dashes
+const PROJECT_ID = import.meta.env.VITE_SANITY_PROJECT_ID || 'a9im6hyq';
 
 let client;
 try {
@@ -10,7 +10,7 @@ try {
     projectId: PROJECT_ID,
     dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
     useCdn: true,
-    apiVersion: '2023-05-03',
+    apiVersion: import.meta.env.VITE_SANITY_API_VERSION || '2023-05-14',
     token: import.meta.env.VITE_SANITY_API_TOKEN, 
   });
 } catch (error) {
@@ -26,7 +26,7 @@ export const urlFor = (source) => {
 
 // Helper for fetching blogs with error handling
 export const getBlogs = async () => {
-  if (!client || PROJECT_ID === 'avp-tech-id') return [];
+  if (!client) return [];
   try {
     const query = `*[_type == "blog"] | order(publishedAt desc) {
       _id,
@@ -35,8 +35,8 @@ export const getBlogs = async () => {
       excerpt,
       mainImage,
       publishedAt,
-      author,
-      categories
+      "author": author->name,
+      "categories": categories[]->title
     }`;
     return await client.fetch(query);
   } catch (err) {
@@ -46,7 +46,7 @@ export const getBlogs = async () => {
 };
 
 export const getBlogPost = async (slug) => {
-  if (!client || PROJECT_ID === 'avp-tech-id' || !slug) return null;
+  if (!client || !slug) return null;
   try {
     const query = `*[_type == "blog" && slug.current == $slug][0] {
       _id,
@@ -55,10 +55,10 @@ export const getBlogPost = async (slug) => {
       body,
       mainImage,
       publishedAt,
-      author,
-      categories,
-      seoTitle,
-      seoDescription
+      "author": author->name,
+      "authorImage": author->image,
+      "categories": categories[]->title,
+      seo
     }`;
     return await client.fetch(query, { slug });
   } catch (err) {

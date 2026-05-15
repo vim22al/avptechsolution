@@ -68,7 +68,7 @@ const Contact = () => {
             >
               Get In Touch
             </motion.span>
-            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
               Let’s Build <span className="text-gradient">Smarter</span> <br />
               Systems Together.
             </h1>
@@ -140,7 +140,7 @@ const Contact = () => {
         <div className="container mx-auto px-6">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
-                 <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
+                 <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
                     Send Us Your <br />
                     <span className="text-gradient">Requirements.</span>
                  </h2>
@@ -285,7 +285,7 @@ const Contact = () => {
                <div className="absolute inset-0 bg-primary/5 -z-10" />
                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
                
-               <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+               <h2 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
                  Ready To <span className="text-gradient">Automate</span> <br />
                  Your Business?
                </h2>

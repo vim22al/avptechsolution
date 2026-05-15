@@ -36,7 +36,7 @@ const Blog = () => {
            >
               📚 AVP Tech Insights
            </motion.div>
-           <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-none text-white">
+           <h1 className="text-4xl sm:text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-none text-white">
               The <span className="text-gradient">Intelligence</span> <br /> Journal.
            </h1>
            <p className="text-[#94A3B8] text-xl font-medium leading-relaxed max-w-2xl mx-auto">

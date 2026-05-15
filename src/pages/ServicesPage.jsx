@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import CRMDashboard from '../components/CRMDashboard';
+
 
 const ServicesPage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -93,7 +95,7 @@ const ServicesPage = () => {
             >
               Enterprise Automation Systems
             </motion.span>
-            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
               Smart Digital Solutions For <br />
               <span className="text-gradient">Modern Businesses</span>
             </h1>
@@ -157,59 +159,73 @@ const ServicesPage = () => {
       <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6">
            <div className="glass rounded-[4rem] p-12 md:p-24 border border-white/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] -z-10" />
+              {/* Background Animated Gradients */}
+              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[140px] -z-10 animate-pulse" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 blur-[100px] -z-10" />
+              
               <div className="grid lg:grid-cols-2 gap-20 items-center">
-                 <div>
-                    <span className="text-accent font-bold text-sm uppercase tracking-[0.3em] mb-6 block">Featured Solution</span>
-                    <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
-                      AVP CRM — Complete <br />
-                      <span className="text-gradient">Lead Lifecycle.</span>
+                 <motion.div
+                   initial={{ opacity: 0, x: -50 }}
+                   whileInView={{ opacity: 1, x: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 0.8 }}
+                 >
+                    <motion.span 
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      className="text-accent font-black text-xs uppercase tracking-[0.4em] mb-8 block px-4 py-1.5 glass rounded-full w-fit border border-accent/20"
+                    >
+                      Featured Enterprise Solution
+                    </motion.span>
+                    <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter leading-[0.95]">
+                      AVP CRM — The <br />
+                      <span className="text-gradient">Growth Engine.</span>
                     </h2>
-                    <p className="text-xl text-[#94A3B8] mb-12 font-medium leading-relaxed">
-                      Manage leads, automate follow-ups, track sales performance, and streamline customer communication from one powerful platform.
+                    <p className="text-xl text-[#94A3B8] mb-12 font-medium leading-relaxed max-w-xl">
+                      Most CRMs are just spreadsheets. AVP CRM is an autonomous engine that hunts for leads, qualifies them via AI, and closes deals while you sleep.
                     </p>
-                    <div className="grid sm:grid-cols-2 gap-6">
-                       {["Lead Management", "Automated Follow-ups", "Team Collaboration", "Sales Tracking", "Performance Reports", "Workflow Automation"].map((f, i) => (
-                         <div key={i} className="flex items-center gap-3 text-sm font-bold">
-                            <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent text-[10px]">✓</div>
-                            {f}
-                         </div>
+                    
+                    <div className="grid sm:grid-cols-2 gap-x-12 gap-y-6 mb-16">
+                       {[
+                         { t: "Lead Sourcing", d: "Auto-capture from all sources." },
+                         { t: "AI Qualification", d: "Intelligent scoring & routing." },
+                         { t: "Omnichannel Sync", d: "WhatsApp, Email & SMS." },
+                         { t: "Predictive ROI", d: "Data-driven forecasting." }
+                       ].map((f, i) => (
+                         <motion.div 
+                           key={i}
+                           initial={{ opacity: 0, y: 10 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           transition={{ delay: 0.1 * i }}
+                           className="flex items-start gap-4"
+                         >
+                            <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center text-primary text-[10px] mt-1">✓</div>
+                            <div>
+                               <h4 className="font-bold text-white text-sm">{f.t}</h4>
+                               <p className="text-[11px] text-[#94A3B8] font-medium">{f.d}</p>
+                            </div>
+                         </motion.div>
                        ))}
                     </div>
-                 </div>
-                 <div className="relative">
-                    <div className="glass aspect-square rounded-[3rem] border border-white/10 p-8 shadow-2xl relative overflow-hidden bg-[#050505]">
-                       <div className="absolute inset-0 bg-grid opacity-5" />
-                       <div className="relative z-10 h-full flex flex-col justify-between">
-                          <div className="flex justify-between items-start">
-                             <div className="w-1/2 space-y-4">
-                                <div className="h-6 w-3/4 bg-primary/20 rounded-lg animate-pulse" />
-                                <div className="h-4 w-full bg-white/5 rounded-md" />
-                             </div>
-                             <div className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center text-primary">📊</div>
-                          </div>
-                          <div className="h-1/2 w-full bg-gradient-to-t from-primary/10 to-transparent border-t border-white/10 rounded-t-3xl p-6 flex items-end">
-                             <div className="w-full flex justify-between gap-2 items-end">
-                                {[40, 70, 45, 90, 65, 80].map((h, i) => (
-                                  <motion.div 
-                                    key={i}
-                                    initial={{ height: 0 }}
-                                    whileInView={{ height: `${h}%` }}
-                                    className="w-full bg-primary/40 rounded-t-lg"
-                                  />
-                                ))}
-                             </div>
-                          </div>
-                       </div>
+
+                    <div className="flex flex-wrap gap-6">
+                       <Link to="/contact" className="bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 transition-all">
+                          Get Started Now
+                       </Link>
+                       <Link to="/contact" className="glass text-white px-10 py-5 rounded-2xl font-black text-lg border border-white/10 hover:bg-white/5 transition-all">
+                          Watch Demo
+                       </Link>
                     </div>
-                    <motion.div 
-                      animate={{ y: [0, -20, 0] }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="absolute -top-10 -right-10 glass p-6 rounded-3xl border border-accent/20 shadow-2xl"
-                    >
-                       <span className="text-xs font-bold uppercase tracking-widest text-accent">Active Leads: 2.8k</span>
-                    </motion.div>
-                 </div>
+                 </motion.div>
+
+                 <motion.div
+                   initial={{ opacity: 0, x: 50, scale: 0.9 }}
+                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                 >
+                    <CRMDashboard />
+                 </motion.div>
               </div>
            </div>
         </div>
@@ -274,7 +290,7 @@ const ServicesPage = () => {
          <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-24 items-center">
                <div>
-                  <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
+                  <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
                     Why Businesses Choose <br />
                     <span className="text-gradient">AVP Tech Solution</span>
                   </h2>
@@ -391,7 +407,7 @@ const ServicesPage = () => {
                <div className="absolute inset-0 bg-primary/5 -z-10" />
                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
                
-               <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+               <h2 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
                  Ready To <span className="text-gradient">Automate</span> <br />
                  And Scale?
                </h2>

@@ -21,7 +21,7 @@ const AICoreVisualization = () => {
   }, [nodes.length]);
 
   return (
-    <div className="relative w-full aspect-square max-w-xl mx-auto group">
+    <div className="relative w-full aspect-square lg:max-w-xl mx-auto group scale-75 lg:scale-100">
       {/* Container with Glassmorphism & Animated Border */}
       <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-[4.5rem] blur-sm opacity-20 group-hover:opacity-40 transition-opacity duration-1000 animate-pulse" />
 
@@ -161,7 +161,7 @@ const About = () => {
             >
               Our Journey
             </motion.span>
-            <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85]">
+            <h1 className="text-4xl sm:text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9]">
               Building Smart <br />
               Digital <span className="text-gradient">Systems.</span>
             </h1>
@@ -194,7 +194,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
+              <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
                 Who <span className="text-gradient">We Are</span>
               </h2>
               <div className="space-y-6 text-xl text-[#94A3B8] font-medium leading-relaxed">
@@ -263,7 +263,7 @@ const About = () => {
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
-              <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
+              <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
                 The <span className="text-gradient">Visionary</span> <br /> Behind AVP Tech
               </h2>
               <p className="text-xl text-[#94A3B8] font-medium leading-relaxed mb-8">
@@ -325,7 +325,7 @@ const About = () => {
       {/* 5. WHAT WE DO (MINI) */}
       <section className="py-32">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-5xl md:text-7xl font-black mb-24 tracking-tighter">Engineered for <span className="text-gradient">Growth.</span></h2>
+          <h2 className="text-4xl md:text-7xl font-black mb-16 lg:mb-24 tracking-tighter">Engineered for <span className="text-gradient">Growth.</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { t: "AI Automation", i: "🤖" },
@@ -369,7 +369,7 @@ const About = () => {
             <div className="absolute inset-0 bg-primary/5 -z-10" />
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
 
-            <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+            <h2 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
               Ready To Build <br />
               Something <span className="text-gradient">Great?</span>
             </h2>

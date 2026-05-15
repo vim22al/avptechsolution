@@ -64,7 +64,7 @@ const BlogPost = () => {
                  {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </span>
            </div>
-           <h1 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-[0.9] text-white">
+           <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-12 tracking-tighter leading-[0.9] text-white">
               {post.title}
            </h1>
            <div className="flex items-center gap-4 pt-12 border-t border-white/5">
@@ -81,12 +81,12 @@ const BlogPost = () => {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-6xl mx-auto mb-24 rounded-[4rem] overflow-hidden border border-white/5 shadow-2xl"
+            className="max-w-6xl mx-auto mb-16 lg:mb-24 rounded-[2rem] lg:rounded-[4rem] overflow-hidden border border-white/5 shadow-2xl"
           >
              <img 
                src={urlFor(post.mainImage).url()} 
                alt={post.title}
-               className="w-full aspect-[21/9] object-cover"
+               className="w-full aspect-video lg:aspect-[21/9] object-cover"
              />
           </motion.div>
         )}

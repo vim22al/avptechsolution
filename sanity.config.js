@@ -5,7 +5,7 @@ export default defineConfig({
   name: 'default',
   title: 'AVP Tech Solution Admin',
 
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'your-project-id',
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'a9im6hyq',
   dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
 
   basePath: '/admin',
@@ -14,28 +14,84 @@ export default defineConfig({
 
   schema: {
     types: [
+      // BLOG POST SCHEMA
       {
         name: 'blog',
-        title: 'Blog',
+        title: 'Blog Post',
         type: 'document',
         fields: [
           { name: 'title', title: 'Title', type: 'string', validation: Rule => Rule.required() },
           { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' }, validation: Rule => Rule.required() },
-          { name: 'author', title: 'Author', type: 'string' },
+          { name: 'author', title: 'Author', type: 'reference', to: [{ type: 'author' }] },
+          { 
+            name: 'mainImage', 
+            title: 'Main Image', 
+            type: 'image', 
+            options: { hotspot: true },
+            fields: [
+              {
+                name: 'alt',
+                type: 'string',
+                title: 'Alternative Text',
+              }
+            ]
+          },
           { 
             name: 'categories', 
             title: 'Categories', 
             type: 'array', 
-            of: [{ type: 'string' }] 
+            of: [{ type: 'reference', to: [{ type: 'category' }] }] 
           },
+          { name: 'publishedAt', title: 'Published at', type: 'datetime' },
           { name: 'excerpt', title: 'Excerpt', type: 'text' },
           { name: 'body', title: 'Body', type: 'array', of: [{ type: 'block' }, { type: 'image' }] },
-          { name: 'mainImage', title: 'Main Image', type: 'image', options: { hotspot: true } },
-          { name: 'publishedAt', title: 'Published At', type: 'datetime' },
-          { name: 'seoTitle', title: 'SEO Title', type: 'string' },
-          { name: 'seoDescription', title: 'SEO Description', type: 'text' },
+          { name: 'tags', title: 'Tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' } },
+          {
+            name: 'seo',
+            title: 'SEO Settings',
+            type: 'object',
+            fields: [
+              { name: 'metaTitle', title: 'Meta Title', type: 'string' },
+              { name: 'metaDescription', title: 'Meta Description', type: 'text' },
+              { name: 'shareImage', title: 'Social Share Image', type: 'image' },
+            ]
+          }
+        ],
+        preview: {
+          select: {
+            title: 'title',
+            author: 'author.name',
+            media: 'mainImage',
+          },
+          prepare(selection) {
+            const {author} = selection
+            return {...selection, subtitle: author && `by ${author}`}
+          },
+        },
+      },
+      // AUTHOR SCHEMA
+      {
+        name: 'author',
+        title: 'Author',
+        type: 'document',
+        fields: [
+          { name: 'name', title: 'Name', type: 'string', validation: Rule => Rule.required() },
+          { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'name' } },
+          { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
+          { name: 'bio', title: 'Bio', type: 'array', of: [{ type: 'block' }] },
         ],
       },
+      // CATEGORY SCHEMA
+      {
+        name: 'category',
+        title: 'Category',
+        type: 'document',
+        fields: [
+          { name: 'title', title: 'Title', type: 'string', validation: Rule => Rule.required() },
+          { name: 'description', title: 'Description', type: 'text' },
+        ],
+      },
+      // EXISTING SCHEMAS (Kept for compatibility)
       {
         name: 'service',
         title: 'Service',
@@ -58,28 +114,6 @@ export default defineConfig({
           { name: 'avatar', title: 'Avatar', type: 'image' },
         ],
       },
-      {
-        name: 'siteSettings',
-        title: 'Site Settings',
-        type: 'document',
-        fields: [
-          { name: 'title', title: 'Site Title', type: 'string' },
-          { name: 'description', title: 'Meta Description', type: 'text' },
-          { name: 'logo', title: 'Logo', type: 'image' },
-          { name: 'contactEmail', title: 'Contact Email', type: 'string' },
-        ],
-      },
-      {
-        name: 'caseStudy',
-        title: 'Case Study',
-        type: 'document',
-        fields: [
-          { name: 'title', title: 'Title', type: 'string' },
-          { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
-          { name: 'description', title: 'Description', type: 'text' },
-          { name: 'image', title: 'Image', type: 'image' },
-        ],
-      }
     ],
   },
 })

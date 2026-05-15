@@ -44,7 +44,7 @@ const Services = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black mb-8 tracking-tighter"
+              className="text-4xl md:text-7xl font-black mb-8 tracking-tighter"
             >
               Our <span className="text-gradient">Capabilities.</span>
             </motion.h2>

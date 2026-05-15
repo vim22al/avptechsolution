@@ -85,7 +85,7 @@ const Testimonials = () => {
            >
               ⭐ Client Success
            </motion.div>
-           <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-tight">
+           <h2 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-tight">
               Trusted By Growing <br />
               <span className="text-gradient">Indian Businesses.</span>
            </h2>

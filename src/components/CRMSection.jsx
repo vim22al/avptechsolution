@@ -106,7 +106,7 @@ const CRMSection = () => {
             >
                ⚡ AVP CRM System
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter">
+            <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter">
               Control Your <br />
               <span className="text-gradient">Growth Engine.</span>
             </h2>

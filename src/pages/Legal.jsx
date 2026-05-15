@@ -13,7 +13,7 @@ const LegalLayout = ({ title, subtitle, children }) => (
         <Link to="/" className="text-primary hover:underline text-sm font-bold mb-8 inline-block flex items-center gap-2">
            ← Back to Home
         </Link>
-        <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tighter leading-tight">
           {title}
         </h1>
         <p className="text-xl text-[#94A3B8] font-medium leading-relaxed">

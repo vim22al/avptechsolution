@@ -37,7 +37,7 @@ const Showcase = () => {
              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
              Live Automation Engine
           </motion.div>
-          <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-tight">
+          <h2 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-tight">
              The <span className="text-gradient">Showcase.</span>
           </h2>
           <p className="text-[#94A3B8] text-xl max-w-2xl mx-auto font-medium leading-relaxed">
@@ -54,7 +54,7 @@ const Showcase = () => {
         >
           {/* Dashboard Frame */}
           <div className="glass rounded-[4rem] border border-white/10 p-3 shadow-[0_0_100px_rgba(37,99,235,0.15)] overflow-hidden bg-[#02040a]">
-             <div className="aspect-[16/9] relative overflow-hidden rounded-[3.5rem] bg-[#02040a] p-8 md:p-12">
+             <div className="aspect-auto lg:aspect-[16/9] relative overflow-hidden rounded-[2.5rem] lg:rounded-[3.5rem] bg-[#02040a] p-6 lg:p-12">
                 <div className="absolute inset-0 bg-grid opacity-5" />
                 
                 {/* Header Status Bar */}
